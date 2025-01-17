@@ -1,5 +1,7 @@
 package com.accio.ecommerceService.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,23 +18,22 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product")
+@Table(name = "cart_items")
 @Builder
-public class Product {
+public class CartItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-	private String description;
-	private Double price;
-	private Integer stock;
+	@ManyToOne
+	private Product product;
+
+	private int quantity;
+	private BigDecimal price;
 
 	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	private Category category;
-
-	private String imageUrl;
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
 
 }

@@ -1,5 +1,7 @@
 package com.accio.ecommerceService.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,23 +18,22 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "product")
 @Builder
-public class Product {
-
+@Table(name = "order_items")
+public class OrderItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-	private String description;
-	private Double price;
-	private Integer stock;
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
 
 	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	private Category category;
+	@JoinColumn(name = "product_id")
+	private Product product;
 
-	private String imageUrl;
+	private int quantity; // represents the quantity of a product
+	private BigDecimal price; // price of a single product unit
 
 }
