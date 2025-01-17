@@ -34,6 +34,6 @@ public class OrderItem {
 	private Product product;
 
 	private int quantity; // represents the quantity of a product
-	private BigDecimal price; // price of a single product unit
+	private BigDecimal totalPrice; // price of a single product unit
 
 }

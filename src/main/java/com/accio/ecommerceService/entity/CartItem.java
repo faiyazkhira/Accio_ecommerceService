@@ -27,10 +27,11 @@ public class CartItem {
 	private Long id;
 
 	@ManyToOne
+	@JoinColumn(name = "product_id")
 	private Product product;
 
 	private int quantity;
-	private BigDecimal price;
+	private BigDecimal totalPrice;
 
 	@ManyToOne
 	@JoinColumn(name = "cart_id")

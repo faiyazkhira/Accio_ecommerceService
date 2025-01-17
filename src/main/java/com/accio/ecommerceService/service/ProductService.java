@@ -24,7 +24,7 @@ public class ProductService {
 
 	public List<ProductResponse> getAllProducts() {
 		List<Product> products = productRepository.findAll();
-		productMapper.toProductResponseList(products);
+		return productMapper.toProductResponseList(products);
 	}
 
 	public ProductResponse getProductById(Long id) {
