@@ -48,10 +48,12 @@ public class CategoryService {
 		return categoryMapper.toCategoryResponse(updatedCategory);
 	}
 
-	public void deleteCategory(Long id) {
+	public String deleteCategory(Long id) {
 		Category category = categoryRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Category not found"));
 		categoryRepository.delete(category);
+
+		return "Category deleted successfully";
 	}
 
 }
